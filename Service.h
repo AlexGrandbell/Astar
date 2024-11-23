@@ -11,22 +11,27 @@
 //优先队列
 #include <random>
 #include <algorithm>
+#include <queue>
+#include <stack>
+#include <unordered_set>
 
 class Service {
 public:
     //A*算法的两种估价函数比较
-    static void AStar();
+    void AStar();
     //宽度优先搜索
-    static void BFS();
+    void BFS() const;
+    //设置初始状态
+    void GetStartState(unsigned seed);
 private:
     //估价函数1
-    static int distance1(NineBlockStateDistance1 state);
+    int distance1(NineBlockStateDistance1 state);
     //估价函数2
-    static int distance2(NineBlockStateDistance2 state);
+    int distance2(NineBlockStateDistance2 state);
     //多态，根据不同的估价函数选择不同的状态
-    static int distance(NineBlockState *state);
+    int distance(NineBlockState *state);
     //随机初始状态
-    static vector<int> startState();
+    vector<int> startState;
 };
 
 
