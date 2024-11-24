@@ -91,7 +91,7 @@ void Service::GetStartState() {
 }
 
 //多态，根据不同的估价函数选择不同的状态
-int Service::eightDigitalPolymorphic(NineBlockState *state, bool useDFS) {
+int Service::eightDigitalPolymorphic(NineBlockState *state, bool useBFS) {
     //模拟优先队列
     vector<Node *> open;
     //已经访问过的节点
@@ -132,13 +132,13 @@ int Service::eightDigitalPolymorphic(NineBlockState *state, bool useDFS) {
             if (find(open.begin(), open.end(), nodeUp) == open.end() && find(close.begin(), close.end(), nodeUp) ==close.end()) {
                 open.push_back(nodeUp);
             }//如果是BFS则不需要下列更新
-            else if (!useDFS && find(open.begin(), open.end(), nodeUp) != open.end()) {
+            else if (!useBFS && find(open.begin(), open.end(), nodeUp) != open.end()) {
                 //如果在open表中，判断是否需要更新
                 auto it = find(open.begin(), open.end(), nodeUp);
                 if ((*it)->depth > nodeUp->depth) {
                     *it = nodeUp;
                 }
-            } else if(!useDFS) {
+            } else if(!useBFS) {
                 //如果在close表中，判断是否需要更新
                 auto it = find(close.begin(), close.end(), nodeUp);
                 if ((*it)->depth > nodeUp->depth) {
@@ -155,13 +155,13 @@ int Service::eightDigitalPolymorphic(NineBlockState *state, bool useDFS) {
             if (find(open.begin(), open.end(), nodeDown) == open.end() && find(close.begin(), close.end(), nodeDown) ==
                 close.end()) {
                 open.push_back(nodeDown);
-            } else if (!useDFS && find(open.begin(), open.end(), nodeDown) != open.end()) {
+            } else if (!useBFS && find(open.begin(), open.end(), nodeDown) != open.end()) {
                 //如果在open表中，判断是否需要更新
                 auto it = find(open.begin(), open.end(), nodeDown);
                 if ((*it)->depth > nodeDown->depth) {
                     *it = nodeDown;
                 }
-            } else if(!useDFS){
+            } else if(!useBFS){
                 //如果在close表中，判断是否需要更新
                 auto it = find(close.begin(), close.end(), nodeDown);
                 if ((*it)->depth > nodeDown->depth) {
@@ -178,13 +178,13 @@ int Service::eightDigitalPolymorphic(NineBlockState *state, bool useDFS) {
             if (find(open.begin(), open.end(), nodeLeft) == open.end() && find(close.begin(), close.end(), nodeLeft) ==
                 close.end()) {
                 open.push_back(nodeLeft);
-            } else if (!useDFS && find(open.begin(), open.end(), nodeLeft) != open.end()) {
+            } else if (!useBFS && find(open.begin(), open.end(), nodeLeft) != open.end()) {
                 //如果在open表中，判断是否需要更新
                 auto it = find(open.begin(), open.end(), nodeLeft);
                 if ((*it)->depth > nodeLeft->depth) {
                     *it = nodeLeft;
                 }
-            } else if(!useDFS){
+            } else if(!useBFS){
                 //如果在close表中，判断是否需要更新
                 auto it = find(close.begin(), close.end(), nodeLeft);
                 if ((*it)->depth > nodeLeft->depth) {
@@ -201,13 +201,13 @@ int Service::eightDigitalPolymorphic(NineBlockState *state, bool useDFS) {
             if (find(open.begin(), open.end(), nodeRight) == open.end() && find(close.begin(), close.end(), nodeRight)
                 == close.end()) {
                 open.push_back(nodeRight);
-            } else if (!useDFS && find(open.begin(), open.end(), nodeRight) != open.end()) {
+            } else if (!useBFS && find(open.begin(), open.end(), nodeRight) != open.end()) {
                 //如果在open表中，判断是否需要更新
                 auto it = find(open.begin(), open.end(), nodeRight);
                 if ((*it)->depth > nodeRight->depth) {
                     *it = nodeRight;
                 }
-            } else if(!useDFS){
+            } else if(!useBFS){
                 //如果在close表中，判断是否需要更新
                 auto it = find(close.begin(), close.end(), nodeRight);
                 if ((*it)->depth > nodeRight->depth) {
@@ -220,7 +220,7 @@ int Service::eightDigitalPolymorphic(NineBlockState *state, bool useDFS) {
         close.push_back(nodeNow);
         //open表中删除当前节点
         open.erase(open.begin());
-        if (!useDFS) {
+        if (!useBFS) {
             //open表排序
             sort(open.begin(), open.end(), [](Node *a, Node *b) { return *a < *b; });
         }
