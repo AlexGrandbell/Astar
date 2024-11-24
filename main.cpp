@@ -4,6 +4,9 @@
 using namespace std;
 
 int main() {
-    Service::AStar();
+    Service service;
+    service.GetStartState(static_cast<unsigned>(time(nullptr)));
+    service.AStar();
+    service.BFS();
     return 0;
 }
