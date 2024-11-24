@@ -5,8 +5,9 @@ using namespace std;
 
 int main() {
     Service service;
-    service.GetStartState(static_cast<unsigned>(time(nullptr)));
-    service.AStar();
-    service.BFS();
+    service.GetStartState();
+    service.eightDigital_AStarWithManhattanDistance();
+    service.eightDigital_AStarWithNotInPlaceDistance();
+    service.eightDigital_BFS();
     return 0;
 }

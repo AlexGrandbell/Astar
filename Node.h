@@ -7,6 +7,7 @@
 
 #include "NineBlockStateDistance1.h"
 #include "NineBlockStateDistance2.h"
+#include "NineBloceStateForBFS.h"
 
 //树节点,使用虚类NineBlockState作为节点的状态，实现时使用其两个子类
 class Node {
@@ -97,9 +98,11 @@ public:
     void printPath() {
         if (parent != nullptr) {
             parent->printPath();
+            cout<<"\n  ↓\n"<<endl;
+            printState();
+        }else{
+            printState();
         }
-        printState();
-        cout << endl;
     }
 };
 
