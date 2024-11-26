@@ -26,7 +26,7 @@ private:
     vector<int> startStateNums;
 
     //多态，根据不同的估价函数选择不同的状态
-    int eightDigitalPolymorphic(NineBlockState *state, bool useBFS= false);
+    int eightDigitalPolymorphic(NineBlockState *state, bool useBFS = false);
 };
 
 

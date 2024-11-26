@@ -9,7 +9,7 @@ void Service::eightDigital_AStarWithManhattanDistance() {
     //估价函数1
     cout << "\n-----\n估价函数1（曼哈顿距离）：" << endl;
     NineBlockStateDistance1 state1(startStateNums);
-    if (eightDigitalPolymorphic(&state1, true) == -1) {
+    if (eightDigitalPolymorphic(&state1) == -1) {
         cout << "无解" << endl;
     }
 }
@@ -19,7 +19,7 @@ void Service::eightDigital_AStarWithNotInPlaceDistance() {
     //估价函数2
     cout << "\n-----\n估价函数2（不在位数码个数）：" << endl;
     NineBlockStateDistance2 state2(startStateNums);
-    if (eightDigitalPolymorphic(&state2, true) == -1) {
+    if (eightDigitalPolymorphic(&state2) == -1) {
         cout << "无解" << endl;
     }
 }
@@ -45,7 +45,7 @@ void Service::GetStartState() {
     vector<int> answer = {1, 2, 3, 8, 0, 4, 7, 6, 5};
     state = answer;
     cout << "正在生成初始状态：" << endl;
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 15; i++) {
         int index = 0;
         //循环找0
         for (int j = 0; j < 9; j++) {
