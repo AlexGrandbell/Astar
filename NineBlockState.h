@@ -19,7 +19,9 @@ public:
     //空格位置
     int x, y;
     //目标状态
-    vector<int> targetState = {1, 2, 3, 8, 0, 4, 7, 6, 5};
+    vector<int> targetState;
+    vector<int> defaultTargetState = {1, 2, 3, 8, 0, 4, 7, 6, 5};//修改这个为默认的最终状态
+    vector<int> defaultStartState = {2, 8, 3, 1, 6, 4, 7, 0, 5};//修改这个为默认的初始状态
 
     //打印当、设置前状态
     void printState();
@@ -42,7 +44,9 @@ public:
     bool isTarget();
 
     //构造函数,需要传入一个状态
+    NineBlockState(vector<int> state,vector<int> targetState);
     NineBlockState(vector<int> state);
+    NineBlockState();
 
     //重载等号运算符，需要数组完全一样
     bool operator==(const NineBlockState &b) const {

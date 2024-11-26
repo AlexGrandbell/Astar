@@ -70,6 +70,18 @@ bool NineBlockState::isTarget() {
     return stateArray == targetState;
 }
 
+NineBlockState::NineBlockState(vector<int> state1, vector<int> targetState1) {
+    stateArray=state1;
+    for (int i = 0; i < 9; i++) {
+        if (stateArray[i] == 0) {
+            x = i / 3;
+            y = i % 3;
+            break;
+        }
+    }
+    targetState=targetState1;
+}
+
 NineBlockState::NineBlockState(vector<int> state1) {
     stateArray=state1;
     for (int i = 0; i < 9; i++) {
@@ -79,4 +91,17 @@ NineBlockState::NineBlockState(vector<int> state1) {
             break;
         }
     }
+    targetState=defaultTargetState;
+}
+
+NineBlockState::NineBlockState() {
+    stateArray=defaultStartState;
+    for (int i = 0; i < 9; i++) {
+        if (stateArray[i] == 0) {
+            x = i / 3;
+            y = i % 3;
+            break;
+        }
+    }
+    targetState=defaultTargetState;
 }

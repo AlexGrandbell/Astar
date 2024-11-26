@@ -42,7 +42,8 @@ void Service::GetStartState() {
     //    state = {2, 8, 3, 1, 6, 4, 7, 0, 5};
 
     //2通过答案随机反向移动几步步生成，包有解的
-    vector<int> answer = {1, 2, 3, 8, 0, 4, 7, 6, 5};
+    NineBlockStateDistance1 tmpState = NineBlockStateDistance1();
+    vector<int> answer = tmpState.defaultTargetState;
     state = answer;
     cout << "正在生成初始状态：" << endl;
     for (int i = 0; i < 15; i++) {
